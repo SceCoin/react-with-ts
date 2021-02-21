@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 const LikeButton: React.FC = () => {
-  const [obj, setObj] = useState({like: 0, on: true})
+  const [like, setLike] = useState(0)
+  const [on, setOn] = useState(true)
+
+  useEffect(() => {
+    document .title = `点击了${like}次`
+  })
 
   return (
     <>
-    <button onClick={() => setObj({like: obj.like + 1, on: obj.on})}>点赞{obj.like}</button>
-    <button onClick={() => setObj({like: obj.like, on: !obj.on})}>{obj.on ? 'true': 'false'}</button>
+    <button onClick={() => setLike(like + 1)}>点赞{like}</button>
+    <button onClick={() => setOn(!on)}>{on ? 'true': 'false'}</button>
     </>
   )
 }
